@@ -2,9 +2,10 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
 import users from '../models/auth.js'
+import logInInfo from '../models/logInInfo.js';
 
 export const signup = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, userDevice } = req.body;
     try {
       const existinguser = await users.findOne({ email });
       if (existinguser) {
@@ -17,6 +18,9 @@ export const signup = async (req, res) => {
         email,
         password: hashedPassword,
       });
+      const loginInfoObj={...userDevice,id:newUser._id}
+      await logInInfo.create(loginInfoObj)
+  
       const token = jwt.sign(
         { email: newUser.email, id: newUser._id },
         process.env.JWT_SECRET,
@@ -24,12 +28,13 @@ export const signup = async (req, res) => {
       );
       res.status(200).json({ result: newUser, token });
     } catch (error) {
-      res.status(500).json("Something went worng...");
+      res.status(500).json("Something went wrong...");
     }
   };
  
   export const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, userDevice } = req.body;
+  
     try {
       const existinguser = await users.findOne({ email });
       if (!existinguser) {
@@ -39,6 +44,9 @@ export const signup = async (req, res) => {
       if (!isPasswordCrt) {
         return res.status(400).json({ message: "Invalid credentials" });
       }
+      const loginInfoObj={... userDevice,id:existinguser._id}
+      await logInInfo.create(loginInfoObj)
+
       const token = jwt.sign(
         { email: existinguser.email, id: existinguser._id },
         process.env.JWT_SECRET,
@@ -46,7 +54,7 @@ export const signup = async (req, res) => {
       );
       res.status(200).json({ result: existinguser, token });
     } catch (error) {
-      res.status(500).json("Something went worng...");
+      res.status(500).json("Something went wrong...");
     }
   };
   
