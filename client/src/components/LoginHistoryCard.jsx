@@ -7,7 +7,6 @@ const LoginHistoryCard = ({history}) => {
       <p>Oprating system: {history.os}</p>
       <p>Ip address: {history.ip}</p>
       <p>Browser: {history.browser}</p>
-
     </div>
   )
 }
