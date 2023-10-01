@@ -1,6 +1,6 @@
 import axios from 'axios'
-
-const API = axios.create({ baseURL: 'https://stackoverflow-backend-s2e8.onrender.com'})
+// https://stackoverflow-backend-s2e8.onrender.com
+const API = axios.create({ baseURL: 'http://localhost:5000'})
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('Profile')){
@@ -22,3 +22,4 @@ export const deleteAnswer = (id, answerId, noOfAnswers) => API.patch(`/answer/de
 
 export const getAllUsers = () => API.get('/user/getAllUsers');
 export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData)
+export const getLoginHistory=()=>API.patch('/user/getLoginHistory')
