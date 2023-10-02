@@ -1,4 +1,5 @@
 import * as api from '../api/index'
+import { fetchAllUsers } from './users'
 
 export const askQuestion = (questionData, navigate) => async (dispatch) => {
     try {
@@ -24,6 +25,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
     try {
         await api.deleteQuestion(id)
         dispatch(fetchAllQuestions())
+        dispatch(fetchAllUsers())
         navigate('/')
     } catch (error) {
         console.log(error)
@@ -34,6 +36,7 @@ export const voteQuestion = (id, value) => async (dispatch) => {
     try {
         await api.voteQuestion(id, value)
         dispatch(fetchAllQuestions())
+        dispatch(fetchAllUsers())
     } catch (error) {
         console.log(error)
     }
@@ -45,6 +48,7 @@ export const postAnswer = (answerData) => async (dispatch) => {
         const { data } = await api.postAnswer( id, noOfAnswers, answerBody, userAnswered )
         dispatch({ type: 'POST_ANSWER', payload: data})
         dispatch(fetchAllQuestions())
+        dispatch(fetchAllUsers())
     } catch (error) {
         console.log(error)
     }
@@ -54,6 +58,7 @@ export const deleteAnswer = (id, answerId, noOfAnswers) => async (dispatch) => {
     try {
         await api.deleteAnswer(id, answerId, noOfAnswers)
         dispatch(fetchAllQuestions())
+        dispatch(fetchAllUsers())
     } catch (error) {
         console.log(error)
     }

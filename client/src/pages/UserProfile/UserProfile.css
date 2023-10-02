@@ -78,3 +78,38 @@
   margin-left: 10px;
   cursor: pointer;
 }
+.badge-container-wrapper{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.badge-container{
+  position: relative;
+  width: fit-content;
+  padding: 12px;
+}
+.badge-container>div{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+  font-size: 20px;
+  font-weight: 700;
+}
+.badge-icon{
+  font-size: 60px;
+}
+#bronze-badge{
+  color: #8f1c0d;
+}
+#silver-badge{
+  color: gray;
+}
+#gold-badge{
+  color: yellow;
+}
