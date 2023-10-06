@@ -85,10 +85,11 @@ export const voteQuestion = async (req, res) => {
         question.upVote = question.upVote.filter((id) => id !== String(userId));
         questionAuthor.points -= 5;
       }
-      await questionAuthor.save();
+      
     } else if (value === "downVote") {
       if (upIndex !== -1) {
         question.upVote = question.upVote.filter((id) => id !== String(userId));
+        questionAuthor.points-=5;
       }
       if (downIndex === -1) {
         question.downVote.push(userId);
@@ -98,6 +99,7 @@ export const voteQuestion = async (req, res) => {
         );
       }
     }
+    await questionAuthor.save();
     await Questions.findByIdAndUpdate(_id, question);
     res.status(200).json({ message: "voted successfully..." });
   } catch (error) {
