@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import decode from 'jwt-decode'
+import decode from "jwt-decode";
 
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
@@ -12,19 +12,18 @@ import { setCurrentUser } from "../../actions/currentUser";
 const Navbar = () => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleLogout = () => {
-    dispatch({ type: 'LOGOUT'});
-    navigate('/')
-    dispatch(setCurrentUser(null))
-  }
-
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+    dispatch(setCurrentUser(null));
+  };
 
   let token = null;
 
-token = User ? User.token : null;
+  token = User ? User.token : null;
 
-useEffect(() => {
+  useEffect(() => {
     if (token) {
       const decodedToken = decode(token);
 
@@ -33,7 +32,7 @@ useEffect(() => {
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
-  }, [dispatch]);
+  }, [dispatch]);
 
   return (
     <nav className="main-nav">
@@ -54,7 +53,7 @@ useEffect(() => {
           <input type="text" placeholder="Search..."></input>
           <img src={search} alt="search" width="18" className="search-icon" />
         </form>
-
+        <div id="google_element"></div>
         {User === null ? (
           <Link to="/Auth" className="nav-item nav-links">
             Log in
@@ -66,7 +65,7 @@ useEffect(() => {
               px="10px"
               py="5px"
               borderRadius="50%"
-              color="white" 
+              color="white"
             >
               <Link
                 to={`/Users/${User.result._id}`}
@@ -75,7 +74,9 @@ useEffect(() => {
                 {User.result.name.charAt(0).toUpperCase()}
               </Link>
             </Avatar>
-            <button className="nav-item nav-links" onClick={handleLogout}>Log Out</button>
+            <button className="nav-item nav-links" onClick={handleLogout}>
+              Log Out
+            </button>
           </>
         )}
       </div>

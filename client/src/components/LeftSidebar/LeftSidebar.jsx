@@ -27,6 +27,7 @@ const LeftSidebar = () => {
                     {loggedInUser && <NavLink to='/loginhistory' className='side-nav-links' activeclassname='active' style={{paddingLeft: "40px"}}>
                         <p>Login History</p>
                     </NavLink>}
+                    
                 </div>
             </nav>
         </div>
