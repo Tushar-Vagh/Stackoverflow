@@ -35,12 +35,12 @@
 .navbar .navbar-1 {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  flex-grow: 10;
 }
 
-.navbar{
+.navbar .navbar-2 {
   display: flex;
-  align-items: center;
+  align-items:center;
 }
 
 .nav-logo {
@@ -48,7 +48,7 @@
 }
 
 .nav-item {
-  margin: 0px 3px;
+  margin: 0px 50px;
   font-size: small;
   font-weight: 500;
   text-decoration: none;
@@ -67,13 +67,13 @@
   background-color: rgb(226, 226, 226);
 }
 
-.navbar form {
+.navbar .navbar-1 form {
   flex-grow: 1;
   padding: 0px 12px;
   position: relative;
 }
 
-.navbar form input {
+.navbar .navbar-1 form input {
   min-width: 90%;
   margin: 0;
   padding: 8px 10px 8px 32px;
@@ -82,7 +82,7 @@
   border-radius: 3px;
 }
 
-.navbar form .search-icon {
+.navbar .navbar-1 form .search-icon {
   position: absolute;
   left: 25px;
   top: 8px;
@@ -98,4 +98,22 @@
 
 .nav-links:hover {
   background-color: #d3e4eb;
+}
+
+@media screen and (max-width: 1120px) {
+  .navbar .navbar-1 form {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .slide-in-icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .navbar .navbar-1 .res-nav {
+    display: none;
+  }
 }
