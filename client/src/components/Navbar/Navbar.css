@@ -4,7 +4,7 @@
   margin: 0% auto;
   border-top: solid 3px #ef8236;
   box-shadow: 0px 1px 5px #00000033;
-  position: fixed;
+  position:fixed;
   z-index: 15;
   top: 0%;
   left: 0%;

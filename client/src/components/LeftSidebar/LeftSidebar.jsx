@@ -63,7 +63,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
           {loggedInUser && <NavLink to='/loginhistory' className='side-nav-links' activeclassname='active' style={{paddingLeft: "40px"}}>
                         <p>Login History</p>
             </NavLink>}
-            <div id="google_element"></div>
+            <div id="google_translate_element"></div>
         </div>
       </nav>
     </div>
