@@ -88,8 +88,8 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
           <h4>3. If user gives an answer then +5 points and for delete -5 points.</h4><br/>
           <h1>How to get Badges: </h1>
           <h4>1. For Bronze badge you have to earn 50 points.</h4>
-          <h4>2. For Silver badge you have to earn 50 points.</h4>
-          <h4>3. For Gold badge you have to earn 50 points.</h4>
+          <h4>2. For Silver badge you have to earn 100 points.</h4>
+          <h4>3. For Gold badge you have to earn 150 points.</h4>
 
         </section>
       </div>
