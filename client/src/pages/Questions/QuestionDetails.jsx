@@ -14,6 +14,7 @@ import { postAnswer, deleteQuestion, voteQuestion } from '../../actions/question
 const QuestionsDetails = () => {
     const { id } = useParams()
     const questionsList = useSelector(state => state.questionsReducer)
+    
     // var questionsList = [{ 
     //     _id: '1',
     //     upVotes: 3,
@@ -97,10 +98,20 @@ const QuestionsDetails = () => {
     }
 
     const handleUpVote = () => {
+        if (!User) {
+            Navigate('/Auth')
+           alert('Please login to vote')
+           return 
+        }
         dispatch(voteQuestion(id, 'upVote'))
     }
 
     const handleDownVote = () => {
+        if (!User) {
+            Navigate('/Auth')
+            alert('Please login to vote') 
+            return
+         }
         dispatch(voteQuestion(id, 'downVote'))
     }
 
